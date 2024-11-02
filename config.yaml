@@ -37,15 +37,15 @@ params:
     Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project
   slogan:
   image_404: img/404-bg.jpg
-  title_404: 'The future is a mystery, you've stumbled into the unknown :('
+  title_404: '你来到了没有知识的荒原 :('
   page_view_conter: false
-  leancloud_app_id: Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz
-  leancloud_app_key: efUYEefAc2eIPBRO59PRERQC
+#  leancloud_app_id: Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz
+#  leancloud_app_key: efUYEefAc2eIPBRO59PRERQC
   # https://forestry.io/blog/search-with-algolia-in-hugo/
   algolia_search: true
-  algolia_appId: WM4BEY1UDN
-  algolia_indexName: blog
-  algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
+#  algolia_appId: WM4BEY1UDN
+#  algolia_indexName: blog
+#  algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
   sidebar_about_description: 'AI Developer at Semper8 | Experienced in Data Science and Finance | Open-Source Enthusiast | Art Lover'
   sidebar_avatar: img/avatar.jpeg
   featured_tags: true
@@ -74,9 +74,9 @@ params:
   social:
     rss: true
     email: 'imaig090@gmail.com'
-    linkedin: 'www.linkedin.com/in/ibrahim-maïga'
+    linkedin: 'https://www.linkedin.com/in/ibrahim-ma%C3%AFga'
     github: 'https://github.com/Ibrahim-Maiga'  
- #   website: 'https://ibrahimmaiga.netlify.app'
+    website: 'https://ibrahimmaiga.netlify.app'
  # friend_link:
  #   - title: 
  #    href: ''
