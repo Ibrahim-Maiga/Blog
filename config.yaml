@@ -38,11 +38,11 @@ params:
     Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project
   slogan:
   image_404: img/404-bg.jpg
-  title_404: 'The future is a mystery you've stumbled into the unknown :('
+  title_404: 'The future is a mystery, you have stumbled into the unknown :('
   page_view_conter: false
 #  leancloud_app_id:
 #  leancloud_app_key: 
-  # https://forestry.io/blog/search-with-algolia-in-hugo/
+# https://forestry.io/blog/search-with-algolia-in-hugo/
   algolia_search: true
 #  algolia_appId: 
 #  algolia_indexName: 
