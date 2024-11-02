@@ -1,6 +1,7 @@
 ---
 baseurl: 'https://ibrahimmaigablog.netlify.app/'
 title: Ibrahim's Blog
+subtitle:   "Exploring the Frontiers of Technology to Unlock a World of Opportunity."
 theme: hugo-theme-cleanwhite
 languageCode: en-us
 # disqusShortname:
@@ -37,7 +38,7 @@ params:
     Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project
   slogan:
   image_404: img/404-bg.jpg
-  title_404: ' :('
+  title_404: 'The future is a mystery :('
   page_view_conter: false
 #  leancloud_app_id: Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz
 #  leancloud_app_key: efUYEefAc2eIPBRO59PRERQC
