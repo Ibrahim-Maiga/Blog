@@ -28,7 +28,26 @@ While I created this theme, I followed the Hugo theme best practice and tried to
 
 ## Screenshots
 
+**Home**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/fullscreenshot.png)
 
+**Post**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/post.png)
+
+**Search**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/sitesearch.png)
+
+**Disqus**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/disqus.png)
+
+**Wechat Pay & Alipay**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/rewards.png)
+
+**Mind Map**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/mindmap.png)
+
+**Bilibili Video**
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/bilibili.png)
 
 ## Quick Start
 
