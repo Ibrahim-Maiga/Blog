@@ -53,11 +53,13 @@ Feel free to connect with me via:
 
 ## Certificates
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6cb590b5-d2f6-42a1-9e2e-a8141624b718" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7ef955db-e669-4939-a1af-2907d37a787c" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="08f232fa-30de-46bf-becb-a7e4ab85ef79" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4b1c58d-20c2-43f4-b4a8-a20d2685b4b4" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="edf1a5de-202c-49e7-9762-f3e6f5ff1b38" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2d98a7fd-7c3c-4d81-95d9-d469cc78f3b1" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="86fbba51-17d8-4718-b6d8-3b8bff7c7377" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="43acab6a-614d-45fa-9e25-d0db557945dd" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="72698e18-7fe3-495f-ad8d-2b3fe7ee9ac4" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
