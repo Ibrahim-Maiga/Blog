@@ -38,22 +38,22 @@ params:
     Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project
   slogan:
   image_404: img/404-bg.jpg
-  title_404: 'The future is a mystery :('
+  title_404: 'The future is a mystery you've stumbled into the unknown :('
   page_view_conter: false
-#  leancloud_app_id: Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz
-#  leancloud_app_key: efUYEefAc2eIPBRO59PRERQC
+#  leancloud_app_id:
+#  leancloud_app_key: 
   # https://forestry.io/blog/search-with-algolia-in-hugo/
   algolia_search: true
-#  algolia_appId: WM4BEY1UDN
-#  algolia_indexName: blog
-#  algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
+#  algolia_appId: 
+#  algolia_indexName: 
+#  algolia_apiKey: 
   sidebar_about_description: 'AI Developer at Semper8 | Experienced in Data Science and Finance | Open-Source Enthusiast | Art Lover'
   sidebar_avatar: img/avatar.jpeg
   featured_tags: true
   featured_condition_size: 5
- # ba_track_id: a1d96090e4189c0376251fb043da7be5
+ # ba_track_id: 
   reward: false
- # reward_guide: 嗯，这篇文章对我有用，鼓励一下...
+ # reward_guide: 
   friends: false
   bookmarks: true
   about_me: true
