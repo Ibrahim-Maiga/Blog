@@ -33,18 +33,19 @@ params:
   SEOTitle: Ibrahim's Blog | Ibrahim Maïga
   description: 'Ibrahim Maïga is an AI Developer with extensive experience in Data Science, and Finance'
   keyword: >-
-    Ibrahim Maïga, AI, Artificial Intelligence, Data, Science, Cloud, Big Data, Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project.
+    Ibrahim Maïga, AI, Artificial Intelligence, Data, Science, Cloud, Big Data, 
+    Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project
   slogan: 'Exploring the Frontiers of Technology to Unlock a World of Opportunity.'
   image_404: img/404-bg.jpg
   title_404: 'The future is a mystery, you've stumbled into the unknown :('
   page_view_conter: false
-  leancloud_app_id: 
-  leancloud_app_key: 
+ # leancloud_app_id: 
+ # leancloud_app_key: 
   # https://forestry.io/blog/search-with-algolia-in-hugo/
   algolia_search: true
-  algolia_appId: 
-  algolia_indexName: 
-  algolia_apiKey: 
+#  algolia_appId: 
+#  algolia_indexName: 
+#  algolia_apiKey: 
   sidebar_about_description: 'AI Developer at Semper8 | Experienced in Data Science and Finance | Open-Source Enthusiast | Art Lover'
   sidebar_avatar: avatar.jpeg
   featured_tags: true
@@ -75,7 +76,7 @@ params:
     email: 'imaig090@gmail.com'
     linkedin: 'www.linkedin.com/in/ibrahim-maïga'
     github: 'https://github.com/Ibrahim-Maiga'  
-    website: 'https://ibrahimmaiga.netlify.app'
+ #   website: 'https://ibrahimmaiga.netlify.app'
  # friend_link:
  #   - title: 
  #    href: ''
