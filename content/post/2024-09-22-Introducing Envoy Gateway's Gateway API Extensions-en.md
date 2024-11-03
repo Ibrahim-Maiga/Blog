@@ -1,125 +1,54 @@
 ---
-layout:     post
-title:      "Beyond Gateway API: Introducing Envoy Gateway's Gateway API Extensions"
-subtitle:
-description: 'As the official Gateway Controller for the Envoy, Envoy Gateway provides full support for all the features of the Kubernetes Gateway API. In addition, Envoy Gateway extends the Gateway API by introducing a range of enhancements for traffic management, security features, and custom extensions that go beyond the standard API. In this post, we’ll dive into these Envoy Gateway extensions and explore their use cases.'
-author: "Huabing Zhao（Envoy Gateway Maintainer）"
-date: 2024-08-31
+layout: post
+title: "Building an Analytics Solution for Effective AML Transaction Monitoring"
+subtitle: "Streamlining Data Migration, Transformation, and Querying"
+description: ""
+author: "Ibrahim Maïga"
+date: 2024-11-01
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
 published: true
-tags: [Envoy, Envoy Gateway]
-categories: [Tech,Open Source]
+tags: [ETL Pipeline, PostgreSQL, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
+categories: [Tech]
 showtoc: true
 ---
 <center>Osaka City Skyline, Taken in Osaka, Japan, Summer 2024</center>
 
-> This article is a summary of my talk,"[Gateway API and Beyond: Introducing Envoy Gateway's Gateway API Extensions¹](https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate)", presented at KubeCon China in Hong Kong, August 2024.
+> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio.
 
-{{< youtube qH2byF7SDO8 >}}
+## Context 
 
-As the official Gateway Controller for the Envoy, [Envoy Gateway²](https://github.com/envoyproxy/gateway) provides full support for all the features of the [Kubernetes Gateway API³](https://gateway-api.sigs.k8s.io).In addition, Envoy Gateway extends the Gateway API by introducing a range of enhancements for traffic management, security features, and custom extensions that go beyond the standard API. In this post, we’ll dive into these Envoy Gateway extensions and explore their use cases.
+At the start of a customer relationship, banks gather personal data to verify the customer’s identity through Know Your Customer (KYC) procedures. These records form the basis for monitoring future transactions.
 
-## Kubernetes Ingress and Its Limitations
+Financial institutions use automated software to monitor transactions in real-time, flagging those that exceed predefined thresholds or show unusual patterns. Suspicious Activity Reports (SARs) are generated if a transaction is deemed questionable. 
 
-[Ingress⁴](https://kubernetes.io/docs/concepts/services-networking/ingres) is a Kubernetes API resource used to define rules for managing inbound traffic to a cluster. While the Ingress API provides users with basic capabilities for defining HTTP routing rules, <font color="red"> **its functionality is quite limited, providing only fundamental features such as Host-based routing, Path-based routing, and TLS termination.** </font>.
+Anti-Money Laundering (AML) regulations require institutions to keep records of transactions for a minimum period. This includes details of transactions, customer profiles, and the SARs filed.
 
-In practice, the basic functionality of the Ingress API often falls short of meeting the complex traffic management requirements of modern applications. As a result, various Ingress Controller implementations have extended the Ingress API using non-standard methods like annotations or custom API resources.
+When a transaction or series of transactions trigger suspicion (such as structuring, large cash deposits, or transfers to high-risk countries), institutions are required to file SARs with regulators. These reports often include transaction details, customer information, and reasons for suspicion.
 
-For example, a common requirement is to match request paths using regular expressions. However, the Ingress API only supports Prefix and Exact path matching, which is insufficient to meet this need.
+## Project Scenario
 
-To address this relatively simple requirement, some Ingress Controllers have introduced annotations to support regex path matching. For example, the NGINX Ingress Controller provides the `nginx.org/path-regex` annotation for this purpose.
+A financial institution processes thousands of transactions daily. To ensure regulatory compliance, the company must periodically review its AML systems and transaction records. Regulators may conduct audits to ensure that the organization is effectively tracking and reporting suspicious transactions. To mitigate non-compliance risk, the institution wants to strengthen its governance by periodically querying AML transaction data without straining the primary transactional database, which runs on Amazon Aurora MySQL.
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: cafe-ingress
-  annotations:
-    nginx.org/path-regex: "case_sensitive"
-spec:
-  rules:
-  - http:
-      paths:
-      - path: "/tea/[A-Z0-9]+"
-        backend:
-          serviceName: tea-svc
-          servicePort: 80
-      - path: "/coffee/[A-Z0-9]+"
-        backend:
-          serviceName: coffee-svc
-          servicePort: 80
-```
+As the company’s data engineer, I will design and implement an ETL pipeline using AWS Glue to extract, transform, and load data from Aurora MySQL into an Amazon S3 bucket designated as the ETL-output-bucket. A second S3 bucket will be set up to store query results. Finally, I’ll test the system using Amazon Athena to query the data stored in the ETL-output-bucket, ensuring AML analysts have seamless access to transaction data, enhancing the AML monitoring framework.
 
-Other controllers, like Traefik, take a different approach, using custom resources like `IngressRoute` to achieve the same result.
+## Financial Cost
 
-```yaml
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: cafe-ingress
-  namespace: default
-spec:
-  routes:
-    - match: "PathPrefix(`^/tea/[A-Z0-9]+`)"
-      kind: Rule
-      services:
-        - name: tea-svc
-          port: 80
-    - match: "PathRegexp(`^/coffee/[A-Z0-9]+`)"
-      kind: Rule
-      services:
-        - name: coffee-svc
-          port: 80
-```
+The total cost of this project was just over 10 USD, primarily due to an initial misconfiguration of partition settings in the Glue job. This led to the unintended creation of thousands of small tables during its first 10-minute run, consuming substantial compute resources and occupying over 300 MB in the ETL-output-bucket. However,  I eventually identified the issue, halted the Glue job, and corrected the partitioning error. Following my detailed guide carefully and completing the project in a single attempt could potentially bring costs down to around half of this amount.
 
-Whether it’s through annotations or custom API resources, <font color="red"> **these non-standard extensions hurt the portability of the Ingress API. Users have to relearn and reconfigure different API setups when switching between Ingress Controllers** </font>. This fragmentation makes things more complicated and slows down community progress, making it tougher for the Kubernetes ecosystem to maintain and evolve the API.
+![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost1.png)
+<center>Services cost and usage graph</center>
 
-## Gateway API: The Next-Generation Ingress API
+![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost2.png)
+<center>Instance type cost and usage graph</center>
 
-To address the limitations of the Ingress API, the Kubernetes community introduced the next generation of Ingress API, known as the Gateway API. This new API specification aims to provide a unified, scalable, and feature-rich way to define rules for managing inbound traffic to a cluster.
+![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost3.png)
+<center>Usage type cost and usage graph</center>
 
-Compared to the Ingress API, the Gateway API offers a lot more functionality. It defines multiple resource types, including Gateway, HTTPRoute, GRPCRoute, TLSRoute, TCPRoute, and UDPRoute. It also gives you more configuration options for traffic routing, such as Path matching, Header matching, Host matching, TLS configuration, traffic splitting, request redirection, and more. Many features that previously required annotations or custom API resources can now be handled directly through the Gateway API.
+![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost4.png)
+<center>API operations cost and usage graph</center>
 
-For example, here’s a Gateway API resource that defines an HTTPRoute, implementing the regular expression-based path matching from the earlier example.
-
-```yaml
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: cafe-httproute
-spec:
-  parentRefs:
-    - name: eg
-  rules:
-    - matches:
-        - path:
-            type: RegularExpression
-            value: "^/tea/[A-Z0-9]+"
-      backendRefs:
-        - name: tea-svc
-          port: 80
-    - matches:
-        - path:
-            type: RegularExpression
-            value: "^/coffee/[A-Z0-9]+"
-      backendRefs:
-        - name: coffee-svc
-          port: 80
-```
-
-Although the Gateway API offers more functionality than Ingress, it’s important to remember that <font color="red"> **any standard, no matter how well-defined, can only serve as the lowest common denominator across all implementations** </font>. The Gateway API is no exception. Because the Gateway API is designed as a universal API specification to ensure wide compatibility, it cannot directly support features that are closely linked to specific implementation details. 
-
-For instance, although features like rate limiting and access control are essential in real-world scenarios, they are implemented differently across data planes like Envoy and NGINX. Because of these differences, the Gateway API cannot offer a universal standard for such functionalities. This is also why the Ingress API saw a proliferation of annotations and custom API resources to fill those gaps.
-
-<font color="red"> **A key innovation of the Gateway API is the [Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) mechanism, which allows controllers to extend the API’s capabilities through custom policies without modifying the Gateway API itself**</font>. By associating custom policies with resources like Gateway and HTTPRoute, this feature enhances the API’s flexibility and enables advanced traffic management, security, and custom extensions. 
-
-In addition to Policy Attachment, the Gateway API aslo supports other extension mechanisms, such as linking custom Backend resources to HTTPRoute and GRPCRoute for routing traffic to non-standard backends, as well as adding custom Filter resources for handling requests and responses.
-
-With these built-in extension mechanisms, the Gateway API strikes a balance between keeping core resources like Gateway and HTTPRoute general enough for broad compatibility, while also providing a standardized way for different controllers to extend functionality. This allows different Ingress Controller implementations to build on the Gateway API’s core resources and offer enhanced features through custom policies, backends, and filters.
-
-
-![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/1.png)
-<center>Comparison Between Ingress and Gateway API</center>
+![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost5.png)
+<center>Free tier offers in use</center>
 
 ## Envoy Gateway's Gateway API Extensions
 
