@@ -13,81 +13,185 @@ showtoc: true
 ---
 <center>Osaka City Skyline, Taken in Osaka, Japan, Summer 2024</center>
 
-> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio.
+> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege. 
 
-## Context 
+# Context 
 
 At the start of a customer relationship, banks gather personal data to verify the customer’s identity through Know Your Customer (KYC) procedures. These records form the basis for monitoring future transactions.
-
 Financial institutions use automated software to monitor transactions in real-time, flagging those that exceed predefined thresholds or show unusual patterns. Suspicious Activity Reports (SARs) are generated if a transaction is deemed questionable. 
 
 Anti-Money Laundering (AML) regulations require institutions to keep records of transactions for a minimum period. This includes details of transactions, customer profiles, and the SARs filed.
-
 When a transaction or series of transactions trigger suspicion (such as structuring, large cash deposits, or transfers to high-risk countries), institutions are required to file SARs with regulators. These reports often include transaction details, customer information, and reasons for suspicion.
 
-## Project Scenario
+# Project Scenario
 
 A financial institution processes thousands of transactions daily. To ensure regulatory compliance, the company must periodically review its AML systems and transaction records. Regulators may conduct audits to ensure that the organization is effectively tracking and reporting suspicious transactions. To mitigate non-compliance risk, the institution wants to strengthen its governance by periodically querying AML transaction data without straining the primary transactional database, which runs on Amazon Aurora MySQL.
 
 As the company’s data engineer, I will design and implement an ETL pipeline using AWS Glue to extract, transform, and load data from Aurora MySQL into an Amazon S3 bucket designated as the ETL-output-bucket. A second S3 bucket will be set up to store query results. Finally, I’ll test the system using Amazon Athena to query the data stored in the ETL-output-bucket, ensuring AML analysts have seamless access to transaction data, enhancing the AML monitoring framework.
 
-## Financial Cost
+# Financial Cost
 
 The total cost of this project was just over 10 USD, primarily due to an initial misconfiguration of partition settings in the Glue job. This led to the unintended creation of thousands of small tables during its first 10-minute run, consuming substantial compute resources and occupying over 300 MB in the ETL-output-bucket. However,  I eventually identified the issue, halted the Glue job, and corrected the partitioning error. Following my detailed guide carefully and completing the project in a single attempt could potentially bring costs down to around half of this amount.
 
-![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost1.png)
+![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost1.png)
 <center>Services cost and usage graph</center>
 
-![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost2.png)
+![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost2.png)
 <center>Instance type cost and usage graph</center>
 
-![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost3.png)
+![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost3.png)
 <center>Usage type cost and usage graph</center>
 
-![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost4.png)
+![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost4.png)
 <center>API operations cost and usage graph</center>
 
-![](/img/Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost5.png)
+![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost5.png)
 <center>Free tier offers in use</center>
+/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/Create PostgreSQL DB, load aml_transactions table, & preprocessing.JPG
 
-## Envoy Gateway's Gateway API Extensions
+# Prerequisites
 
-Envoy is a powerful cloud-native proxy widely used in service mesh, API gateway, and edge proxy scenarios, offering advanced traffic management capabilities and flexible configuration options. However, configuring Envoy as an Ingress Gateway can be challenging, often requiring users to write hundreds or even thousands of lines of configuration—on top of the complexity of deploying and managing the Envoy instances themselves.
+Before running the pipeline, we need data in the transactional database. While multiple methods can be used to load data into it, I chose to incorporate a database migration phase to add depth to the project. This process involves configuring an on-premises PostgreSQL server, creating a database on it, and storing the AML transaction data locally. We’ll then use AWS Database Migration Service (DMS) to transfer the database from our local PostgreSQL server to an Aurora MySQL cluster in the cloud, setting the stage for ETL operations.
 
-To make configuring and managing Envoy easier, the Envoy community introduced the Envoy Gateway project. <font color=red> **Envoy Gateway is an Ingress Gateway built on Envoy, designed to provide a streamlined, user-friendly experience for managing Envoy as an API Gateway**</font>. It uses the Gateway API as its configuration language, fully compatible with the latest Gateway API version, and supports resources like Gateway, HTTPRoute, GRPCRoute, TLSRoute, TCPRoute, and UDPRoute.
+It should be noted that AWS DMS is currently incompatible with PostgreSQL versions 16 and 17. Therefore, I opted for PostgreSQL version 15, ensuring full compatibility with DMS and a smooth migration process.
 
-Moreover, Envoy Gateway leverages the Gateway API’s extension mechanisms to offer a rich set of additional features, , including rate limiting, access control, WebAssembly extensions, and more, extending beyond the capabilities of the standard Gateway API.
+# Step-by-Step Guide
 
-Envoy Gateway introduces the following custom resources:
+## Step 1: Setup Your Postgres Database 
 
-* Policy Attachment: Includes ClientTrafficPolicy, BackendTrafficPolicy, SecurityPolicy, EnvoyExtensionPolicy, and EnvoyPatchPolicy. These policies can be attached to API Gateway resources like Gateway, HTTPRoute, and GRPCRoute to provide advanced traffic management, security, and custom extension capabilities.
-* Custom HTTPRoute Filter: Supports URL rewriting, direct response, and other advanced request and response processing features at the HTTPRoute rule level.
-* Custom Backend: The Backend can be used within HTTPRoute and GRPCRoute rules to route traffic to non-kubernetes backends, such as IP addresses, hostnames, or UDS addresses.
+First, install PostgreSQL version 15 on your local machine (which creates a server by default), and then you can manage the server settings and databases using the pgAdmin tool or by executing SQL commands through <code>psql</code>. While I executed the project using PowerShell on a Windows device, the following commands can easily be adapted for use in any command-line interface (CLI).
 
-The relationship between these custom resources and the standard resources of the Gateway API is illustrated in the diagram below:
+To connect to your PostgreSQL instance using the <code>psql</code> command-line tool, from the Windows Command Prompt or PowerShell, execute the following command:
 
-![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/Envoy-Gateway-Resources.png)
-<center>Envoy Gateway Resources</center>
+```powershell
+& "C:\Program Files\PostgreSQL\15\bin\psql.exe" -U postgres
+```
 
-> Special thanks to [Erica Hughberg](https://www.linkedin.com/in/ericahughberg) for drwaing this diagram. She also created many other amazing visuals to explain complex technical concepts in a simple and intuitive way. Follow her on [LinkedIn](https://www.linkedin.com/in/ericahughberg) to see more of her work.
+During the PostgreSQL installation, you defined a password for the <code>postgres</code> superuser account. Enter this password after executing the previous command and press Enter to launch <code>psql</code>.
 
-This article will focus on the custom policy resources provided by Envoy Gateway, as HTTPRoute Filters and Custom Backends are relatively straightforward and self-explanatory.
+```psql
+\l       -- List all the databases that are available in the PostgreSQL server
+```
+```psql
+create database aml_transactions_db;
+```
+```psql
+\c aml_transactions_db;      -- Connect to aml_transactions_db database
+```
+```psql
+create table aml_transactions (
+    Time TIME,
+    Date DATE,
+    Sender_account VARCHAR(10),
+    Receiver_account VARCHAR(10),
+    Amount DECIMAL(10,2),
+    Payment_currency VARCHAR(10),
+    Received_currency VARCHAR(10),
+    Sender_bank_location VARCHAR(15),
+    Receiver_bank_location VARCHAR(15),
+    Payment_type VARCHAR(15),
+    Is_laundering BOOLEAN,
+    Laundering_type VARCHAR(25),
+    Sender_dob DATE,
+    Receiver_dob DATE
+);
+```
+```psql
+\copy aml_transactions(Time, Date, Sender_account, Receiver_account, Amount, Payment_currency, Received_currency, Sender_bank_location, Receiver_bank_location, Payment_type, Is_laundering, Laundering_type, Sender_dob, Receiver_dob) FROM 'path/to/sample_AML.csv' DELIMITER ',' CSV HEADER;      -- Insert data from the sample_AML.csv file into the aml_transactions table in your aml_transactions_db database
+```
+```psql
+select * from aml_transactions limit 5;     -- Show 5 first rows within the aml_transactions table
+```
+```psql
+ALTER TABLE aml_transactions
+ALTER COLUMN Is_laundering TYPE integer USING CASE 
+    WHEN Is_laundering THEN 1
+    ELSE 0
+END;             -- Change the column type from boolean to integer
+```
+```psql
+select * from aml_transactions limit 5;     -- Check the changes
+```
 
-Next, let's take a closer look at Envoy Gateway's Gateway API extension features and explore their use cases.
+Step 2: Set Up Amazon RDS Aurora MySQL
 
-## Policy Attachment Mechanism
+<iframe src="https://scribehow.com/embed/Creating_an_RDS_Aurora_MySQL_Database_on_AWS__Fa2K9uj2RCCnGVnwSDbkqw?as=video" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-[Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) is an extension mechanism provided by the Gateway API, allowing a policy to be attached to resources like GatewayClass, Gateway, HTTPRoute, GRPCRoute, and Service to provide additional capabilities. Envoy Gateway leverages the Policy Attachment mechanism to implement various policies, exposing Envoy's powerful traffic management capabilities at the Gateway level.
+Step 3: Use AWS Database Migration Service (DMS)
+3.1 Configure AWS DMS to migrate data from Postgres to Aurora:
 
-A policy can be attached to different lelves in the Gateway API resource hierarchy, and multiple policies can be attached to the same resource. The scope and priority of Policy Attachment in Envoy Gateway are defined as follows:
+In the AWS Console, go to AWS DMS.
+Set up a replication instance:
+Create a new Replication Instance with the appropriate size.
+Create source and target endpoints:
+Source: Postgres database (ensure the VPC and security group settings allow connectivity to your Postgres database).
+Target: Aurora MySQL database.
+Create a migration task:
+Use Full load to migrate the entire dataset from Postgres to Aurora MySQL.
+Make sure you map the tables and columns correctly.
+Potential Issues:
 
-* A policy attached to a parent resource applies to all of its child resources.
-  * A policy attached to a Gateway applies to all Listeners within that Gateway. (e.g., ClientTrafficPolicy)
-  * A policy attached to a Gateway applies to all HTTPRoute and GRPCRoute resources under that Gateway. (e.g., BackendTrafficPolicy, SecurityPolicy, EnvoyExtensionPolicy)
-* If policies of the same type are attached to both a parent and child resource, the policy on the child resource takes precedence.
-  * If both a Gateway and a Listener have the same type of policy attached, the policy on the Listener takes effect. (e.g., ClientTrafficPolicy)
-  * If both a Gateway and an HTTPRoute or GRPCRoute have the same type of policy attached, the policy on the HTTPRoute or GRPCRoute takes precedence. (e.g., BackendTrafficPolicy, SecurityPolicy, EnvoyExtensionPolicy)
-* If multiple policies of the same type are attached to a single resource, the policy with the earliest creation time takes priority and is applied.
+Endpoint connectivity: Test both endpoints before migration to ensure Postgres and Aurora MySQL are accessible from the DMS instance.
+Replication Instance Size: If migration takes too long, consider increasing the size of the replication instance.
+Step 4: Set Up S3 Buckets
+4.1 Create S3 Buckets for ETL outputs:
+
+In the AWS Console, go to Amazon S3.
+Create two buckets:
+One for storing the ETL output data (etl-output-bucket).
+Another for saving query results (query-output-bucket).
+Potential Issues:
+
+Permissions: Ensure both buckets have the proper IAM roles and bucket policies so AWS Glue and Athena can write to and read from these buckets.
+Step 5: Set Up AWS Glue for ETL
+5.1 Create a Glue Crawler to catalog your data:
+
+In the AWS Console, go to AWS Glue.
+Create a Crawler that connects to your Aurora MySQL database:
+Set up a JDBC connection to your Aurora MySQL cluster.
+The Crawler will automatically discover the schema from Aurora and create a table in the Glue Data Catalog.
+Run the Crawler and ensure the schema is properly reflected in Glue Data Catalog.
+5.2 Create an AWS Glue job to transform the data:
+
+Use Glue Studio to create a new visual job.
+
+Set the source as the table in the Glue Data Catalog (from Aurora).
+
+Apply transformations, such as removing PII data:
+
+Example transformation script to remove date of birth columns:
+
+python
+Copy code
+import pyspark.sql.functions as F
+
+def transform_data(df):
+    return df.drop("Sender_dob", "Receiver_dob")
+Write the output to the ETL output bucket.
+
+Potential Issues:
+
+Glue Crawler Connectivity: Ensure the JDBC connection has the right security group and access permissions.
+Job Failure: Check CloudWatch Logs for job failures. Adjust memory and worker node configurations if the job runs out of memory.
+Step 6: Use Amazon Athena for Queries
+6.1 Configure Athena to query the data:
+
+In the AWS Console, go to Amazon Athena.
+Set the query result output location to the query-output-bucket.
+Use Athena’s query editor to run SQL queries on the transformed data stored in the S3 bucket.
+Here’s an example of how to query laundering transactions (SQL from earlier):
+
+sql
+Copy code
+SELECT *
+FROM "etl-output-bucket"."aml_transactions"
+WHERE Is_laundering = 1;
+Potential Issues:
+
+Schema Issues: Ensure that the table schema in Glue Data Catalog is correctly defined, especially after the ETL process.
+Query Execution Limits: Athena charges per query, so optimize your queries to avoid high costs.
+Step 7: Run On-Demand Queries for AML Analysts
+AML analysts can now use Athena to run ad-hoc queries for on-demand reporting. They can access transaction data efficiently without burdening the primary OLTP database.
 
 ## ClientTrafficPolicy: Managing Traffic Between Clients and Envoy
 
