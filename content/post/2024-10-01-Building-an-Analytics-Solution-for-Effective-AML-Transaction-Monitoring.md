@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building an Analytics Solution for Effective AML Transaction Monitoring AWS ETL"
+title: "Building an Analytics Solution for Effective AML Transaction Monitoring AWS"
 subtitle: "Streamlining Data Migration, Transformation, and Querying"
 description: ""
 author: "Ibrahim Maïga"
