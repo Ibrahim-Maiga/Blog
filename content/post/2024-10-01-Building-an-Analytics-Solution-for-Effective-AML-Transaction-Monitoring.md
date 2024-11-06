@@ -133,6 +133,7 @@ With the above information, you're ready to set up port forwarding.
 **2. Access Your Router’s Admin Panel.**
 * Open your web browser and enter your router’s IP address (Default Gateway) in the address bar. 
 * Enter your router’s admin username and password to log in. If you don’t know them, they are often printed on the router or available in its manual.
+
 **3. Locate the Port Forwarding Section.**
 
 This section is usually found under settings like: Advanced Settings, Firewall, Virtual Server, NAT, or Port Forwarding.
@@ -146,6 +147,7 @@ Add a new rule to forward external traffic to your PostgreSQL server:
 * Internal Port: Set this to 5432 (the default port PostgreSQL listens on).
 * Protocol: Select TCP (PostgreSQL uses TCP for communication).
 * Enable the Rule: Make sure to check the box to enable the rule.
+
 **5. Apply and Save Changes.**
   
 Some routers may require a restart to apply the settings, so restart your router if prompted.
@@ -159,6 +161,7 @@ On your machine running PostgreSQL, you need to ensure PostgreSQL is set up to a
     ```
 * Find the line that says <code>listen_addresses</code>, and ensure it’s set to allow remote connections: <code>listen_addresses = '*'</code>. This tells PostgreSQL to listen on all available IP addresses.
 * Save the file.
+  
 **7. Configure pg_hba.conf for Remote Connections.**
   
 You also need to update the <code>pg_hba.conf</code> file to allow connections from external IPs:
