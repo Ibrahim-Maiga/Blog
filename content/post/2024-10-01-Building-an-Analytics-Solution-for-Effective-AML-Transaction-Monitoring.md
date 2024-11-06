@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Building an Analytics Solution for Effective AML Transaction Monitoring AWS"
-subtitle: "Streamlining Data Migration, Transformation, and Querying AWS"
-description: "AWS"
+title: "Building an Analytics Solution for Effective AML Transaction Monitoring"
+subtitle: "Streamlining Data Migration, Transformation, and Querying"
+description: ""
 author: "Ibrahim Maïga"
 date: 2024-11-01
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
@@ -13,12 +13,12 @@ showtoc: true
 ---
 <center>Osaka City Skyline, Taken in Osaka, Japan, Summer 2024</center>
 
-> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege.AWS
+> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege.
 
 ![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/AML-Project-Architecture-Diagram.png)
 <center>Architecture Diagram</center>
 
-## Context AWS
+## Context 
 
 At the start of a customer relationship, banks gather personal data to verify the customer’s identity through Know Your Customer (KYC) procedures. These records form the basis for monitoring future transactions.
 Financial institutions use automated software to monitor transactions in real-time, flagging those that exceed predefined thresholds or show unusual patterns. Suspicious Activity Reports (SARs) are generated if a transaction is deemed questionable. 
