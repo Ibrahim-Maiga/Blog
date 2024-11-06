@@ -75,7 +75,7 @@ params:
   # disqus_proxy : ''
   # disqus_site : ''
   social:
-    rss: false
+ #   rss: true
     email: 'imaig090@gmail.com'
     linkedin: 'https://www.linkedin.com/in/ibrahim-ma%C3%AFga'
     github: 'https://github.com/Ibrahim-Maiga'  
