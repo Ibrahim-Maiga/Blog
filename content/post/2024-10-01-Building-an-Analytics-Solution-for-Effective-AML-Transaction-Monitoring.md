@@ -4,7 +4,7 @@ title: "Building an Analytics Solution for Effective AML Transaction Monitoring"
 subtitle: "Streamlining Data Migration, Transformation, and Querying"
 description: ""
 author: "Ibrahim Maïga"
-date: 2024-11-01
+date: "2024-11-01"
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
 published: true
 tags: [ETL Pipeline, PostgreSQL, AWS, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
