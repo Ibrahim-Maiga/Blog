@@ -36,6 +36,8 @@ As the company’s data engineer, I will design and implement an ETL pipeline us
 
 The total cost of this project was just over 10 USD, primarily due to an initial misconfiguration of partition settings in the Glue job. This led to the unintended creation of thousands of small tables during its first 10-minute run, consuming substantial compute resources and occupying over 300 MB in the ETL-output-bucket. However,  I eventually identified the issue, halted the Glue job, and corrected the partitioning error. Following my detailed guide carefully and completing the project in a single attempt could potentially bring costs down to around half of this amount.
 
+Here is some additional information regarding the project's cost:
+
 ![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/cost1.png)
 <center>Services cost and usage graph</center>
 
@@ -60,7 +62,7 @@ It should be noted that AWS DMS is currently incompatible with PostgreSQL versio
 
 ## Step-by-Step Guide
 
-### *Step 1: Setup Your Postgres Database* 
+### Step 1: Setup Your Postgres Database
 
 First, install PostgreSQL version 15 on your local machine (which creates a server by default), and then you can manage the server settings and databases using the pgAdmin tool or by executing SQL commands through <code>psql</code>. While I executed the project using PowerShell on a Windows device, the following commands can easily be adapted for use in any command-line interface (CLI).
 
@@ -172,19 +174,19 @@ You also need to update the <code>pg_hba.conf</code> file to allow connections f
     ```
   * Save the file and restart the PostgreSQL service to apply the changes.
 
-### *Step 2: Set Up Amazon RDS Aurora MySQL*
+### Step 2: Set Up Amazon RDS Aurora MySQL
 
 Here is a comprehensive guide for setting up Amazon RDS with Aurora MySQL:
 
 <iframe src="https://scribehow.com/embed/Creating_an_RDS_Aurora_MySQL_Database_on_AWS__Fa2K9uj2RCCnGVnwSDbkqw?as=video" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-### *Step 3: Configure Security Group and Create VPC Endpoint for S3*
+### Step 3: Configure Security Group and Create VPC Endpoint for S3
 
 You can use this guide to configure the security group and create a VPC endpoint for S3.
 
 <iframe src="https://scribehow.com/embed/Configure_Security_Group_and_Create_VPC_Endpoint_for_S3_in_AWS___gYHCW6qQtK1REc6Egz3TA?as=video" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-### *Step 4: Use AWS Database Migration Service (DMS)*
+### Step 4: Use AWS Database Migration Service (DMS)
 
 Please refer to the following guide on how to configure an IAM Role for AWS DMS:
 
@@ -204,7 +206,7 @@ To initiate a migration task:
 
 Endpoint connectivity: Test both endpoints before migration to ensure Postgres and Aurora MySQL are accessible from the DMS instance.
 
-### *Step 5: Set up S3 Buckets with Appropriate IAM Roles*
+### Step 5: Set up S3 Buckets with Appropriate IAM Roles
 
 The following guide will help you set up S3 buckets with the appropriate IAM roles:
 
@@ -212,7 +214,7 @@ The following guide will help you set up S3 buckets with the appropriate IAM rol
 
 Permissions: Ensure both buckets have the proper IAM roles and bucket policies so AWS Glue and Athena can write to and read from these buckets.
 
-### *Step 6: Initiate AWS Glue for ETL*
+### Step 6: Initiate AWS Glue for ETL
 
 Let's build a metadata repository, create a crawler to catalog AML transaction data, and configure an ETL Job for dataset Processing:
 
@@ -220,7 +222,7 @@ Let's build a metadata repository, create a crawler to catalog AML transaction d
 
 Glue Crawler Connectivity: Ensure the JDBC connection has the right security group and access permissions.
 
-### *Step 6: Utilize Amazon Athena for Queries*
+### Step 7: Utilize Amazon Athena for Queries
 
 Athena Spark could be used for larger datasets to enhance performance and scalability. To configure an Athena workgroup and query AML data using the Trino engine, follow the guide below: 
 
