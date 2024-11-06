@@ -56,7 +56,7 @@ params:
   reward: false
  # reward_guide: 
   friends: false
-  bookmarks: true
+  bookmarks: false
   about_me: true
   giscus:
     data_repo: "Ibrahim-Maiga/Blog"
