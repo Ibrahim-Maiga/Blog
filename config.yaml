@@ -52,7 +52,7 @@ params:
   sidebar_about_description: 'AI Developer at Semper8 | Experienced in Data Science and Finance | Open-Source Enthusiast | Art Lover'
   sidebar_avatar: img/avatar.jpeg
   featured_tags: true
-  featured_condition_size: 5
+  featured_condition_size: 2
  # ba_track_id: 
   reward: false
  # reward_guide: 
@@ -75,7 +75,7 @@ params:
   # disqus_proxy : ''
   # disqus_site : ''
   social:
-    rss: true
+    rss: false
     email: 'imaig090@gmail.com'
     linkedin: 'https://www.linkedin.com/in/ibrahim-ma%C3%AFga'
     github: 'https://github.com/Ibrahim-Maiga'  
