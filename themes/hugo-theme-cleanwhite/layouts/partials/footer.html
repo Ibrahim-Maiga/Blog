@@ -186,12 +186,12 @@
                 </a>
             </li>
             {{ end }}
-            {{ with .Site.Params.social.flickr }}
+            {{ with .Site.Params.social.website }}
             <li>
                 <a target="_blank" href="{{ . }}">
                     <span class="fa-stack fa-lg">
                         <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-flickr fa-stack-1x fa-inverse"></i>
+                        <i class="fab fa-globe fa-stack-1x fa-inverse"></i>
                     </span>
                 </a>
             </li>
@@ -208,7 +208,7 @@
             {{ end }}
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; {{ .Site.Title }} {{ now.Year }} {{- if .Site.Params.icp }} | {{ with .Site.Params.icp }}{{ . | markdownify }}{{ end }}{{- end}}
+                    Copyright &copy; {{ .Site.Author }} {{ now.Year }} {{- if .Site.Params.icp }} | {{ with .Site.Params.icp }}{{ . | markdownify }}{{ end }}{{- end}}
                     {{ if .Site.Params.upstreamAttribution }}
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
