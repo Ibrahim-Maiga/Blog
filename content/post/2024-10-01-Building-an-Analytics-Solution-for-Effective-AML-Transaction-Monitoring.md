@@ -137,36 +137,39 @@ With the above information, you're ready to set up port forwarding.
 This section is usually found under settings like: Advanced Settings, Firewall, Virtual Server, NAT, or Port Forwarding.
 
 4. Create a New Port Forwarding Rule.
-* Add a new rule to forward external traffic to your PostgreSQL server:
-   * Service/Port Name: You can name it something like PostgreSQL.
-   * External Port/Start-End Port: Set the external port to 5432. This is the port that will be open to the internet.
-   * Internal IP Address: Enter the local IP address of the machine running PostgreSQL.
-   * Internal Port: Set this to 5432 (the default port PostgreSQL listens on).
-   * Protocol: Select TCP (PostgreSQL uses TCP for communication).
-   * Enable the Rule: Make sure to check the box to enable the rule.
+
+Add a new rule to forward external traffic to your PostgreSQL server:
+* Service/Port Name: You can name it something like PostgreSQL.
+* External Port/Start-End Port: Set the external port to 5432. This is the port that will be open to the internet.
+* Internal IP Address: Enter the local IP address of the machine running PostgreSQL.
+* Internal Port: Set this to 5432 (the default port PostgreSQL listens on).
+* Protocol: Select TCP (PostgreSQL uses TCP for communication).
+* Enable the Rule: Make sure to check the box to enable the rule.
 5. Apply and Save Changes.
   
 Some routers may require a restart to apply the settings, so restart your router if prompted.
 
 6. Ensure PostgreSQL is Configured to Allow Remote Connections.
-* On your machine running PostgreSQL, you need to ensure PostgreSQL is set up to allow connections from external IPs:
-   * Open the <code>postgresql.conf</code> file in the PostgreSQL data directory (e.g., C:\Program Files\PostgreSQL\17\data\postgresql.conf) or type the following command in your CLI:
+   
+On your machine running PostgreSQL, you need to ensure PostgreSQL is set up to allow connections from external IPs:
+* Open the <code>postgresql.conf</code> file in the PostgreSQL data directory (e.g., C:\Program Files\PostgreSQL\17\data\postgresql.conf) or type the following command in your CLI:
     ```powershell
     notepad "C:\Program Files\PostgreSQL\15\data\postgresql.conf"
     ```
-   * Find the line that says <code>listen_addresses</code>, and ensure it’s set to allow remote connections: <code>listen_addresses = '*'</code>. This tells PostgreSQL to listen on all available IP addresses.
-   * Save the file.
+* Find the line that says <code>listen_addresses</code>, and ensure it’s set to allow remote connections: <code>listen_addresses = '*'</code>. This tells PostgreSQL to listen on all available IP addresses.
+* Save the file.
 7. Configure pg_hba.conf for Remote Connections.
-* You also need to update the <code>pg_hba.conf</code> file to allow connections from external IPs:
-   * Open the <code>pg_hba.conf</code> file located in the same data directory (e.g., C:\Program Files\PostgreSQL\17\data\pg_hba.conf) or type the following command in your CLI:
+  
+You also need to update the <code>pg_hba.conf</code> file to allow connections from external IPs:
+* Open the <code>pg_hba.conf</code> file located in the same data directory (e.g., C:\Program Files\PostgreSQL\17\data\pg_hba.conf) or type the following command in your CLI:
     ```powershell
     notepad "C:\Program Files\PostgreSQL\15\data\pg_hba.conf"
     ```
-   * Add the following line to allow remote connections (replace 0.0.0.0/0 with the public IP address of your DMS replication instance to comply with the principle of least privilege):    
+* Add the following line to allow remote connections (replace 0.0.0.0/0 with the public IP address of your DMS replication instance to comply with the principle of least privilege):    
     ```conf
     host    all             all             0.0.0.0/0               md5
     ```
-   * Save the file and restart the PostgreSQL service to apply the changes.
+* Save the file and restart the PostgreSQL service to apply the changes.
 
 ### Step 2: Set Up Amazon RDS Aurora MySQL
 
