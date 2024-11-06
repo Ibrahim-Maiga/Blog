@@ -190,3 +190,10 @@ button.close {
     padding: 15px 0;
     display: none;
 }
+
+.avatar-circle {
+    clip-path: circle(50%);
+    border: 4px solid grey;
+    display: inline-block;
+}
+
