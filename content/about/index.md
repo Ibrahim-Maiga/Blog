@@ -4,7 +4,7 @@ multilingual: false
 ---
 
 ## About Me
-Ibrahim Maïga is an AI developer with a background in mathematics and finance. His career showcases a blend of technical skills and interpersonal abilities, illustrated through various professional roles and successful projects. He demonstrates a strong ability to create innovative AI solutions, such as the Flypto Prototype, an early version of Flypto, an AI-powered cryptocurrency trading bot currently under development. Passionate about using data to create positive changes, he continues to build on his experience with a clear focus on innovation and efficiency, aiming to uniquely impact data-driven organizations.
+Ibrahim Maïga is an AI developer with a background in mathematics, data science, and finance. His career showcases a blend of technical skills and interpersonal abilities, illustrated through various professional roles and successful projects. He demonstrates a strong ability to create innovative AI solutions, such as the Flypto Prototype, an early version of Flypto, an AI-powered cryptocurrency trading bot currently under development. Passionate about using data to create positive changes, he continues to build on his experience with a clear focus on innovation and efficiency, aiming to uniquely impact data-driven organizations.
 
 
 ## Certificates
