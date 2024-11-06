@@ -188,10 +188,10 @@
             {{ end }}
             {{ with .Site.Params.social.website }}
             <li>
-                <a target="_blank" href="{{ . }}">
+                <a target="_blank" href="{{ . | relURL }}">
                     <span class="fa-stack fa-lg">
                         <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-rss fa-stack-1x fa-inverse"></i>
+                        <i class="fab fa-globe fa-stack-1x fa-inverse"></i>
                     </span>
                 </a>
             </li>
