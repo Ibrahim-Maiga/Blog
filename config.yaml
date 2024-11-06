@@ -2,7 +2,7 @@
 baseurl: "https://ibrahimmaigablog.netlify.app/"
 title: "Ibrahim's Blog"
 subtitle: "Exploring the Frontiers of Technology to Unlock a World of Opportunity."
-excerpt: "Exploring the Frontiers of Technology to Unlock a World of Opportunity."
+excerpt: 
 theme: hugo-theme-cleanwhite
 languageCode: en-us
 # disqusShortname:
