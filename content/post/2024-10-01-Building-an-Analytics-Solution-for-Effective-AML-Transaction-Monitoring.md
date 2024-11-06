@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Building an Analytics Solution for Effective AML Transaction Monitoring AWS"
-subtitle: "Streamlining Data Migration, Transformation, and Querying"
-description: ""
+subtitle: "Streamlining Data Migration, Transformation, and Querying AWS"
+description: "AWS"
 author: "Ibrahim Maïga"
 date: 2024-11-01
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
