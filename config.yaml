@@ -33,11 +33,11 @@ markup:
 params:
   header_image: /img/background.webp
   SEOTitle: Ibrahim's Blog | Ibrahim Maïga
-  description: 'Ibrahim Maïga is an AI Developer with extensive experience in Data Science, and Finance | Exploring the Frontiers of Technology to Unlock a World of Opportunity.'
+  description: 'Ibrahim Maïga is an AI Developer with extensive experience in Data Science, and Finance'
   keyword: >-
     Ibrahim Maïga, AI, Artificial Intelligence, Data, Science, Cloud, Big Data, 
     Finance, Technology, Python, SQL, ETL, Developer, Blog, AWS, Git, Portfolio, Project
-  slogan:
+  slogan: 'Exploring the Frontiers of Technology to Unlock a World of Opportunity.'
   image_404: img/404-bg.jpg
   title_404: 'The future is a mystery, you have stumbled into the unknown :('
   page_view_conter: false
