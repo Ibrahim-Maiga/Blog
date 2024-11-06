@@ -52,7 +52,7 @@ params:
   sidebar_about_description: 'AI Developer at Semper8 | Experienced in Data Science and Finance | Open-Source Enthusiast | Art Lover'
   sidebar_avatar: img/avatar.jpeg
   featured_tags: true
-  featured_condition_size: 2
+  featured_condition_size: 1
  # ba_track_id: 
   reward: false
  # reward_guide: 
