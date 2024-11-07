@@ -202,7 +202,7 @@ button.close {
     display: inline-block;
     width: 10px;
     height: 1em;
-    background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00aaff, #66d9ff); /* Darker blue to lighter blue gradient */
+    background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00aaff, #00c7ff); /* Darker blue to lighter blue gradient */
     background-size: 100% 200%; /* Adjust to emphasize gradient transition */
     background-position: top;
     margin-left: 5px;
