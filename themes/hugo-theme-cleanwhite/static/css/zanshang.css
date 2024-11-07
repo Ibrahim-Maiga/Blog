@@ -200,18 +200,31 @@ button.close {
 
 .logo__cursor {
     display: inline-block;
-    width: 10px; /* Adjust thickness if needed */
+    width: 10px;
     height: 1em;
-    background: linear-gradient(180deg, #003366, #007aff, #00c7ff); /* Darker blue to lighter blue */
-    margin-left: 5px; /* Space between the title and cursor */
-    animation: gradient-blink 1.5s ease-in-out infinite;
+    background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00aaff, #00c7ff); /* Darker blue to lighter blue gradient */
+    background-size: 100% 200%; /* Adjust to emphasize gradient transition */
+    background-position: top;
+    margin-left: 5px;
+    animation: gradient-fade 1.5s ease-in-out infinite;
     vertical-align: middle;
 }
 
-@keyframes gradient-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+@keyframes gradient-fade {
+    0% {
+        opacity: 1;
+        background-position: top;
+    }
+    50% {
+        opacity: 0;
+        background-position: bottom;
+    }
+    100% {
+        opacity: 1;
+        background-position: top;
+    }
 }
+
 
 
 @keyframes fadeBounce {
