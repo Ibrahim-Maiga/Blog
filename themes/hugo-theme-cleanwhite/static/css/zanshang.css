@@ -216,11 +216,11 @@ button.close {
         background-position: 0% 0%; /* Dark blue */
     }
     33% {
-        opacity: 0.7;
+        opacity: 0.66;
         background-position: 0% 50%; /* Medium blue */
     }
     66% {
-        opacity: 0.4;
+        opacity: 0.33;
         background-position: 0% 75%; /* Lighter blue */
     }
     100% {
