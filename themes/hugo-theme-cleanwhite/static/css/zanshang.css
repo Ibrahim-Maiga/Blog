@@ -213,7 +213,7 @@ button.close {
 @keyframes gradient-fade {
     0% {
         opacity: 1;
-        background-position: top;
+        background-position: bottom;
     }
     50% {
         opacity: 0;
