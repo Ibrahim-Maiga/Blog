@@ -202,17 +202,16 @@ button.close {
     display: inline-block;
     width: 10px; /* Adjust thickness if needed */
     height: 1em;
-    background-color: red; /* Adjust to match the navbar color */
+    background: linear-gradient(180deg, #007aff, #00c7ff, #00bfff); /* Spectrum of blue colors */
     margin-left: 5px; /* Space between the title and cursor */
-    animation: blink 1s steps(1) infinite;
+    animation: gradient-blink 1.5s ease-in-out infinite;
     vertical-align: middle;
 }
 
-@keyframes blink {
+@keyframes gradient-blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
-
 
 
 @keyframes fadeBounce {
