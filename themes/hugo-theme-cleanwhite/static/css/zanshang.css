@@ -199,16 +199,16 @@ button.close {
 
 .logo__cursor {
     display: inline-block;
-    width: 2px; /* Adjust thickness as desired */
+    width: 10px; /* Adjust thickness as desired */
     height: 1em;
-    background-color: black; /* Adjust to match the navbar color */
+    background-color: orange; /* Adjust to match the navbar color */
     margin-right: 5px; /* Space between the cursor and text */
     animation: blink 1s steps(1) infinite;
-    vertical-align: middle;
+    vertical-align: baseline;
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
+    0%, 80% { opacity: 1; }
     50% { opacity: 0; }
 }
 
