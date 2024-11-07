@@ -197,24 +197,20 @@ button.close {
     display: inline-block;
 }
 
-
 .logo__cursor {
     display: inline-block;
     width: 10px; /* Adjust thickness as desired */
     height: 1em;
     background-color: red; /* Adjust to match the navbar color */
+    transition: background-color 1.1s ease, transform 0.3s ease;
     margin-right: 5px; /* Space between the cursor and text */
-    animation: blink 1.5s ease-in-out infinite; /* Change to ease-in-out for smoother transition */
+    animation: blink 1.5s ease-in-out infinite;
     vertical-align: baseline;
 }
 
 @keyframes blink {
-    0%, 100% { 
-        opacity: 1; /* Fully visible at the start and end */
-    }
-    50% { 
-        opacity: 0.3; /* Set opacity to a lower value at the middle for a smooth fade effect */
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
 
