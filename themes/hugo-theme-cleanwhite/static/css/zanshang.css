@@ -200,15 +200,15 @@ button.close {
 
 .logo__cursor {
     display: inline-block;
-    width: 10px; /* Adjust thickness as desired */
+    width: 10px; /* Adjust thickness if needed */
     height: 1em;
-    background-color: red; /* Adjust color as needed */
-    margin-right: 5px; /* Space between cursor and text */
-    animation: smooth-blink 1.5s ease-in-out infinite;
-    vertical-align: baseline;
+    background-color: red; /* Adjust to match the navbar color */
+    margin-left: 5px; /* Space between the title and cursor */
+    animation: blink 1s steps(1) infinite;
+    vertical-align: middle;
 }
 
-@keyframes smooth-blink {
+@keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
