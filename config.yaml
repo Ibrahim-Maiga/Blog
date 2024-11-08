@@ -32,7 +32,7 @@ markup:
     renderer:
       unsafe: true
 params:
-  header_image: /img/background.webp
+  header_image: /img/jesse-orrico-rmWtVQN5RzU-unsplash.jpg
   SEOTitle: Ibrahim's Blog | Ibrahim Maïga
   description: 'Ibrahim Maïga is an AI Developer with extensive experience in Data Science, and Finance'
   keyword: >-
