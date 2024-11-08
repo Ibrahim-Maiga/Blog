@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building an Analytics Solution for Effective AML Transaction Monitoring"
-subtitle: "Streamlining Data Migration, Transformation, and Querying"
+subtitle: "Streamlining Data Migration, Transformation, and Querying - "
 description: "Explore a comprehensive ETL pipeline project designed to enhance AML transaction monitoring for financial institutions. This hands-on guide walks you through using AWS services like Aurora MySQL, Glue, DMS, and Athena to build a robust solution for AML compliance. Ideal for data enthusiasts aiming to bridge finance and data science, this project covers database migration, ETL processing, and cost-effective querying, all while adhering to best practices in security and cost management."
 author: "Ibrahim Maïga"
 date: "2024-11-01"
@@ -11,14 +11,14 @@ tags: [ETL Pipeline, PostgreSQL, AWS, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
 categories: [Tech]
 showtoc: true
 ---
-<center>Osaka City Skyline, Taken in Osaka, Japan, Summer 2024</center>
+<center>Photo by [Donald Giannatti](https://unsplash.com/@wizwow?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/gray-satellite-disc-on-field-Wj1D-qiOseE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)</center>
 
 > This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege.
 
 ![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/AML-Project-Architecture-Diagram.png)
 <center>Architecture Diagram</center>
 
-## Context 
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size:150%; text-align:left; padding:10px; background:#CCA483; border-radius: 10px;">Context</div>
 
 At the start of a customer relationship, banks gather personal data to verify the customer’s identity through Know Your Customer (KYC) procedures. These records form the basis for monitoring future transactions.
 Financial institutions use automated software to monitor transactions in real-time, flagging those that exceed predefined thresholds or show unusual patterns. Suspicious Activity Reports (SARs) are generated if a transaction is deemed questionable. 
