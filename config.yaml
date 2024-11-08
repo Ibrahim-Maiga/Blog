@@ -32,7 +32,7 @@ markup:
     renderer:
       unsafe: true
 params:
-  header_image: /img/donald-giannatti-Wj1D-qiOseE-unsplash.jpg
+  header_image: /img/hoach-le-dinh-c8TWWQ5ZnUw-unsplash.jpg
   SEOTitle: Ibrahim's Blog | Ibrahim Maïga
   description: 'Ibrahim Maïga is an AI Developer with extensive experience in Data Science, and Finance'
   keyword: >-
