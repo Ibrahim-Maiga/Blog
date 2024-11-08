@@ -213,7 +213,7 @@ button.close {
 @keyframes gradient-fade {
    0% {
         opacity: 1;
-        background-position: 0% 0%; /* Dark blue */
+        background-position: 5% 5%; /* Dark blue */
     }
     20% {
         opacity: 0.8;
@@ -231,7 +231,7 @@ button.close {
         opacity: 0.2;
         background-position: 0% 80%; /* Lighter blue */
     }
-    100% {
+    95% {
         opacity: 0;
         background-position: 0% 100%; /* Faded blue */
     }
