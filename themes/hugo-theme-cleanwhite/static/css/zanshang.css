@@ -231,7 +231,7 @@ button.close {
         opacity: 0.2;
         background-position: 0% 80%; /* Lighter blue */
     }
-    95% {
+    100% {
         opacity: 0;
         background-position: 0% 100%; /* Faded blue */
     }
