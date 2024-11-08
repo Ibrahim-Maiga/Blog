@@ -127,9 +127,7 @@ Look for the section under your active network connection (Wi-Fi or Ethernet), a
 
 With the above information, you're ready to set up port forwarding.
 
-#### <a style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: center; padding: 10px; background-color: #e9f5f3; border-radius: 8px;">
-    🛠️ Guide to Configure Port Forwarding for PostgreSQL 🛠️
-</a>
+#### <div style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: center; padding: 5px; background-color: #e9f5f3; border-radius: 5px;">🛠️ Guide to Configure Port Forwarding for PostgreSQL 🛠️</div>
 
 
 **1. 🔑 Access Your Router’s Admin Panel.**
