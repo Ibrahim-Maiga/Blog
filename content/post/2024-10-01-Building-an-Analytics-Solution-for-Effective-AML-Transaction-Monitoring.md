@@ -11,14 +11,14 @@ tags: [ETL Pipeline, PostgreSQL, AWS, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
 categories: [Tech]
 showtoc: true
 ---
-<center>Photo by [Donald Giannatti](https://unsplash.com/@wizwow?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/gray-satellite-disc-on-field-Wj1D-qiOseE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)</center>
+<p align="center">Photo by <a href="https://unsplash.com/@wizwow?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Donald Giannatti</a> on <a href="https://unsplash.com/photos/gray-satellite-disc-on-field-Wj1D-qiOseE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
 
 > This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege.
 
 ![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/AML-Project-Architecture-Diagram.png)
 <center>Architecture Diagram</center>
 
-## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size:150%; text-align:left; padding:10px; background:#CCA483; border-radius: 10px;">Context</div>
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Context</div>
 
 At the start of a customer relationship, banks gather personal data to verify the customer’s identity through Know Your Customer (KYC) procedures. These records form the basis for monitoring future transactions.
 Financial institutions use automated software to monitor transactions in real-time, flagging those that exceed predefined thresholds or show unusual patterns. Suspicious Activity Reports (SARs) are generated if a transaction is deemed questionable. 
@@ -26,13 +26,13 @@ Financial institutions use automated software to monitor transactions in real-ti
 Anti-Money Laundering (AML) regulations require institutions to keep records of transactions for a minimum period. This includes details of transactions, customer profiles, and the SARs filed.
 When a transaction or series of transactions trigger suspicion (such as structuring, large cash deposits, or transfers to high-risk countries), institutions are required to file SARs with regulators. These reports often include transaction details, customer information, and reasons for suspicion.
 
-## Project Scenario
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Project Scenario</div>
 
 A financial institution processes thousands of transactions daily. To ensure regulatory compliance, the company must periodically review its AML systems and transaction records. Regulators may conduct audits to ensure that the organization is effectively tracking and reporting suspicious transactions. To mitigate non-compliance risk, the institution wants to strengthen its governance by periodically querying AML transaction data without straining the primary transactional database, which runs on Amazon Aurora MySQL.
 
 As the company’s data engineer, I will design and implement an ETL pipeline using AWS Glue to extract, transform, and load data from Aurora MySQL into an Amazon S3 bucket designated as the ETL-output-bucket. A second S3 bucket will be set up to store query results. Finally, I’ll test the system using Amazon Athena to query the data stored in the ETL-output-bucket, ensuring AML analysts have seamless access to transaction data, enhancing the AML monitoring framework.
 
-## Financial Cost
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Financial Cost</div>
 
 The total cost of this project was just over 10 USD, primarily due to an initial misconfiguration of partition settings in the Glue job. This led to the unintended creation of thousands of small tables during its first 10-minute run, consuming substantial compute resources and occupying over 300 MB in the ETL-output-bucket. However,  I eventually identified the issue, halted the Glue job, and corrected the partitioning error. Following my detailed guide carefully and completing the project in a single attempt could potentially bring costs down to around half of this amount.
 
@@ -54,13 +54,13 @@ Here is some additional information regarding the project's cost:
 <center>Free tier offers in use</center>
 
 
-## Prerequisites
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Prerequisites</div>
 
 Before running the pipeline, we need [data²](https://www.kaggle.com/datasets/berkanoztas/synthetic-transaction-monitoring-dataset-aml) in the transactional database. While multiple methods can be used to load data into it, I chose to incorporate a database migration phase to add depth to the project. This process involves configuring an on-premises PostgreSQL server, creating a database on it, and storing the AML transaction data locally. We’ll then use AWS Database Migration Service (DMS) to transfer the database from our local PostgreSQL server to an Aurora MySQL cluster in the cloud, setting the stage for ETL operations.
 
 It should be noted that AWS DMS is currently incompatible with PostgreSQL versions 16 and 17. Therefore, I opted for PostgreSQL version 15, ensuring full compatibility with DMS and a smooth migration process.
 
-## Step-by-Step Guide
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Step-by-Step Guide</div>
 
 ### Step 1: Setup Your Postgres Database
 
@@ -257,7 +257,7 @@ Schema Issues: Ensure that the table schema in Glue Data Catalog is correctly de
 
 With Amazon Athena now providing AML analysts with direct access to transaction data, they can run ad-hoc queries on the AML dataset stored in Amazon S3. This setup enables analysts to efficiently analyze transaction records without imposing additional load on the primary OLTP database, ensuring uninterrupted operational performance. By leveraging Athena’s serverless architecture with the AWS Glue Data Catalog, analysts can execute queries with minimal latency, gain timely insights, and meet regulatory compliance requirements without the overhead of traditional database management.
 
-## Key Takeaways
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Key Takeaways</div>
 
 This project offers valuable insights into integrating cloud-based data engineering tools for AML compliance. By using AWS services like Aurora MySQL, DMS, Glue, S3, and Athena, I was able to design a cost-effective, reproducible pipeline that prioritizes both security and performance. Here are some essential lessons from the experience:
 
@@ -269,11 +269,11 @@ This project offers valuable insights into integrating cloud-based data engineer
 
 **Simplicity with Amazon Athena for Queries**: With Athena, complex queries on large datasets become manageable, allowing AML analysts to extract valuable insights on high-risk transactions without impacting transactional databases. This separation of reporting and operational databases enhances overall system performance.
 
-## Thank You for Reading!
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">Thank You for Reading!</div>
 
 Thank you for taking the time to explore this project. I hope you found it insightful and helpful. Your support and engagement mean a lot to me, and I’m grateful for the opportunity to share this journey with you. Please feel free to leave your thoughts, questions, or suggestions in the comments; I would love to hear from you and continue the conversation. Stay curious, and happy coding!
 
-## References
+## <div style="font-family: 'Playfair Display', serif; font-weight:bold; letter-spacing: 1px; color:#FAF0EF; font-size: 1em; text-align:left; padding:5px; background:#CCA483; border-radius: 5px;">References</div>
  1. [Enhancing Anti-Money Laundering: Development of a Synthetic Transaction Monitoring Dataset](https://ieeexplore.ieee.org/document/10356193): https://ieeexplore.ieee.org/document/10356193
  2. [Anti Money Laundering Transaction Data (SAML-D)](https://www.kaggle.com/datasets/berkanoztas/synthetic-transaction-monitoring-dataset-aml): Anti Money Laundering Transaction Data (SAML-D)
  3. [AWS Skill Builder](https://explore.skillbuilder.aws/learn): https://explore.skillbuilder.aws/learn
