@@ -203,7 +203,7 @@ button.close {
     width: 10px;
     height: 1em;
     background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00aaff, #00c7ff); /* Darker to lighter blue gradient */
-    background-size: 0% 300%; /* Expand for more gradual transition */
+    background-size: 100% 100%; /* Expand for more gradual transition */
     background-position: top;
     margin-left: 5px;
     animation: gradient-fade 1s ease-in-out infinite;
