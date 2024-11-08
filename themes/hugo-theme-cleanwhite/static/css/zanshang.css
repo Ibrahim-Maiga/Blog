@@ -202,7 +202,7 @@ button.close {
     display: inline-block;
     width: 10px;
     height: 1em;
-    background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00aaff, transparent); /* Darker to lighter blue gradient */
+    background: linear-gradient(180deg, #003366, #0055cc, #007aff, transparent); /* Darker to lighter blue gradient */
     background-size: 100% 500%; /* Expand for more gradual transition */
     background-position: bottom;
     margin-left: 5px;
@@ -213,7 +213,7 @@ button.close {
 @keyframes gradient-fade {
    0% {
         opacity: 1;
-        background-position: 5% 5%; /* Dark blue */
+        background-position: 0% 0%; /* Dark blue */
     }
     20% {
         opacity: 0.8;
