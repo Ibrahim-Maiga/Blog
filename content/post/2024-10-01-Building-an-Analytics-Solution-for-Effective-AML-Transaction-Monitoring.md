@@ -127,17 +127,20 @@ Look for the section under your active network connection (Wi-Fi or Ethernet), a
 
 With the above information, you're ready to set up port forwarding.
 
-#### Guide to Configure Port Forwarding for PostgreSQL
+#### <a style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: center; padding: 10px; background-color: #e9f5f3; border-radius: 8px;">
+    🛠️ Guide to Configure Port Forwarding for PostgreSQL 🛠️
+</a>
 
-**1. Access Your Router’s Admin Panel.**
+
+**1. 🔑 Access Your Router’s Admin Panel.**
 * Open your web browser and enter your router’s IP address (Default Gateway) in the address bar. 
 * Enter your router’s admin username and password to log in. If you don’t know them, they are often printed on the router or available in its manual.
 
-**2. Locate the Port Forwarding Section.**
+**2. 📡 Locate the Port Forwarding Section.**
 
 This section is usually found under settings like: Advanced Settings, Firewall, Virtual Server, NAT, or Port Forwarding.
 
-**3. Create a New Port Forwarding Rule.**
+**3.➕ Create a New Port Forwarding Rule.**
 
 Add a new rule to forward external traffic to your PostgreSQL server:
 * Service/Port Name: You can name it something like PostgreSQL.
@@ -147,11 +150,11 @@ Add a new rule to forward external traffic to your PostgreSQL server:
 * Protocol: Select TCP (PostgreSQL uses TCP for communication).
 * Enable the Rule: Make sure to check the box to enable the rule.
 
-**4. Apply and Save Changes.**
+**4. 💾 Apply and Save Changes.**
   
 Some routers may require a restart to apply the settings, so restart your router if prompted.
 
-**5. Ensure PostgreSQL is Configured to Allow Remote Connections.**
+**5. 🔧 Ensure PostgreSQL is Configured to Allow Remote Connections.**
    
 On your machine running PostgreSQL, you need to ensure PostgreSQL is set up to allow connections from external IPs:
 * Open the <code>postgresql.conf</code> file in the PostgreSQL data directory (e.g., C:\Program Files\PostgreSQL\17\data\postgresql.conf) or type the following command in your CLI:
@@ -161,7 +164,7 @@ On your machine running PostgreSQL, you need to ensure PostgreSQL is set up to a
 * Find the line that says <code>listen_addresses</code>, and ensure it’s set to allow remote connections: <code>listen_addresses = '*'</code>. This tells PostgreSQL to listen on all available IP addresses.
 * Save the file.
   
-**6. Configure pg_hba.conf for Remote Connections.**
+**6. 🔒 Configure pg_hba.conf for Remote Connections.**
   
 You also need to update the <code>pg_hba.conf</code> file to allow connections from external IPs:
 * Open the <code>pg_hba.conf</code> file located in the same data directory (e.g., C:\Program Files\PostgreSQL\17\data\pg_hba.conf) or type the following command in your CLI:
