@@ -201,7 +201,7 @@ button.close {
     display: inline-block;
     width: 10px; /* Adjust thickness if needed */
     height: 1em;
-    background: linear-gradient(180deg, #007aff, #00c7ff, #00bfff); /* Spectrum of blue colors */
+    background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00c7ff, #00bfff, transparent); /* Spectrum of blue colors */ 
     margin-left: 5px; /* Space between the title and cursor */
     animation: gradient-blink 1.5s ease-in-out infinite;
     vertical-align: middle;
