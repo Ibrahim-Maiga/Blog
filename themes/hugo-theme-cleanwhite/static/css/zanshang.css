@@ -197,47 +197,20 @@ button.close {
     display: inline-block;
 }
 
-
 .logo__cursor {
     display: inline-block;
-    width: 10px;
+    width: 10px; /* Adjust thickness if needed */
     height: 1em;
-    background: linear-gradient(180deg, #003366, #0055cc, #007aff, transparent); /* Darker to lighter blue gradient */
-    background-size: 100% 500%; /* Expand for more gradual transition */
-    background-position: bottom;
-    margin-left: 5px;
-    animation: gradient-fade 1.1s ease-in-out infinite;
+    background: linear-gradient(180deg, #007aff, #00c7ff, #00bfff); /* Spectrum of blue colors */
+    margin-left: 5px; /* Space between the title and cursor */
+    animation: gradient-blink 1.5s ease-in-out infinite;
     vertical-align: middle;
 }
 
-@keyframes gradient-fade {
-   0% {
-        opacity: 1;
-        background-position: 0% 0%; /* Dark blue */
-    }
-    20% {
-        opacity: 0.8;
-        background-position: 0% 20%; /* Dark blue */
-    }
-    40% {
-        opacity: 0.6;
-        background-position: 0% 40%; /* Medium blue */
-    }
-    60% {
-        opacity: 0.4;
-        background-position: 0% 60%; /* Medium blue */
-    }
-    80% {
-        opacity: 0.2;
-        background-position: 0% 80%; /* Lighter blue */
-    }
-    100% {
-        opacity: 0;
-        background-position: 0% 100%; /* Faded blue */
-    }
+@keyframes gradient-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
-
-
 
 
 @keyframes fadeBounce {
