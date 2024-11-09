@@ -5,7 +5,7 @@ subtitle: "Streamlining Data Migration, Transformation, and Querying"
 description: "Explore a comprehensive ETL pipeline project designed to enhance AML transaction monitoring for financial institutions. This hands-on guide walks you through using AWS services like Aurora MySQL, Glue, DMS, and Athena to build a robust solution for AML compliance. Ideal for data enthusiasts aiming to bridge finance and data science, this project covers database migration, ETL processing, and cost-effective querying, all while adhering to best practices in security and cost management."
 author: "Ibrahim Maïga"
 date: "2024-11-01"
-image: "/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/natalia-y-DIewyzpUbRc-unsplash.jpg"
+image: "/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/iStock-1604793948.jpg"
 published: true
 tags: [ETL Pipeline, PostgreSQL, AWS, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
 categories: [Tech]
