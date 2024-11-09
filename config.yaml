@@ -32,7 +32,7 @@ markup:
     renderer:
       unsafe: true
 params:
-  header_image: img/arsalan-cheema-U1R9en4Upcg-unsplash.jpg
+  header_image: img/1arsalan-cheema-U1R9en4Upcg-unsplash.jpg
   SEOTitle: Ibrahim's Blog | Ibrahim Maïga
   description: 'Ibrahim Maïga is an AI Developer with extensive experience in Data Science, and Finance'
   keyword: >-
