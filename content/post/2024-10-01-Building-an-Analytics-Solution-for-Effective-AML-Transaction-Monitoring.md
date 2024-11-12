@@ -5,7 +5,7 @@ subtitle: "Streamlining Data Migration, Transformation, and Querying"
 description: "Explore a comprehensive ETL pipeline project designed to enhance AML transaction monitoring for financial institutions. This hands-on guide walks you through using AWS services like Aurora MySQL, Glue, DMS, and Athena to build a robust solution for AML compliance. Ideal for data enthusiasts aiming to bridge finance and data science, this project covers database migration, ETL processing, and cost-effective querying, all while adhering to best practices in security and cost management."
 author: "Ibrahim Maïga"
 date: "2024-11-01"
-image: "img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/iStock-1604793948.jpg"
+image: "img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/iStock-1300182982.jpg"
 published: true
 tags: [ETL Pipeline, PostgreSQL, AWS, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
 categories: [Tech]
@@ -62,7 +62,7 @@ It should be noted that AWS DMS is currently incompatible with PostgreSQL versio
 
 ## <div style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: left; padding: 3px; background-color: #e9f5f3; border-radius: 5px;">Step-by-Step Guide</div>
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 1: Setup Your Postgres Database</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 1: Setup Your Postgres Database</a>
 
 First, install PostgreSQL version 15 on your local machine (which creates a server by default), and then you can manage the server settings and databases using the pgAdmin tool or by executing SQL commands through <code>psql</code>. While I executed the project using PowerShell on a Windows device, the following commands can easily be adapted for use in any command-line interface (CLI).
 
@@ -175,19 +175,19 @@ You also need to update the <code>pg_hba.conf</code> file to allow connections f
     ```
 * Save the file and restart the PostgreSQL service to apply the changes.
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 2: Set Up Amazon RDS Aurora MySQL</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 2: Set Up Amazon RDS Aurora MySQL</a>
 
 Here is a comprehensive guide for setting up Amazon RDS with Aurora MySQL:
 
 <iframe src="https://scribehow.com/embed/Creating_an_RDS_Aurora_MySQL_Database_on_AWS__Fa2K9uj2RCCnGVnwSDbkqw?as=video" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 3: Configure Security Group and Create VPC Endpoint for S3</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 3: Configure Security Group and Create VPC Endpoint for S3</a>
 
 You can use this guide to configure the security group and create a VPC endpoint for S3:
 
 <iframe src="https://scribehow.com/embed/Configure_Security_Group_and_Create_VPC_Endpoint_for_S3_in_AWS___gYHCW6qQtK1REc6Egz3TA?as=video" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 4: Use AWS Database Migration Service (DMS)</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 4: Use AWS Database Migration Service (DMS)</a>
 
 Please refer to the following guide on how to configure an IAM Role for AWS DMS:
 
@@ -207,7 +207,7 @@ To initiate a migration task:
 
 Endpoint connectivity: Test both endpoints before migration to ensure Postgres and Aurora MySQL are accessible from the DMS instance.
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 5: Set up S3 Buckets with Appropriate IAM Roles</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 5: Set up S3 Buckets with Appropriate IAM Roles</a>
 
 The following guide will help you set up S3 buckets with the appropriate IAM roles:
 
@@ -215,7 +215,7 @@ The following guide will help you set up S3 buckets with the appropriate IAM rol
 
 Permissions: Ensure both buckets have the proper IAM roles and bucket policies so AWS Glue and Athena can write to and read from these buckets.
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 6: Initiate AWS Glue for ETL</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 6: Initiate AWS Glue for ETL</a>
 
 Let's build a metadata repository, create a crawler to catalog AML transaction data, and configure an ETL Job for dataset Processing:
 
@@ -223,7 +223,7 @@ Let's build a metadata repository, create a crawler to catalog AML transaction d
 
 Glue Crawler Connectivity: Ensure the JDBC connection has the right security group and access permissions.
 
-### <a style="text-decoration: none; color:#CCA483; font-weight: bold;">Step 7: Utilize Amazon Athena for Queries</a>
+### <a style="text-decoration: none; color: #2a9d8f; font-weight: bold;">Step 7: Utilize Amazon Athena for Queries</a>
 
 Athena Spark could be used for larger datasets to enhance performance and scalability. To configure an Athena workgroup and query AML data using the Trino engine, follow the guide below: 
 
