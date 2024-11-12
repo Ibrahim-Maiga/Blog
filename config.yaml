@@ -14,7 +14,6 @@ hasCJKLanguage: true
 outputs:
   home:
     - HTML
-    - RSS
     - Algolia
 outputFormats:
   Algolia:
@@ -46,9 +45,9 @@ params:
 #  leancloud_app_key: 
 # https://forestry.io/blog/search-with-algolia-in-hugo/
   algolia_search: true
-#  algolia_appId: 
-#  algolia_indexName: 
-#  algolia_apiKey: 
+  algolia_appId: M4BEY1UDN
+  algolia_indexName: blog
+  algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
   sidebar_about_description: 'AI Developer at Semper8 | Experienced in Data Science and Finance | Open-Source Enthusiast | Art Lover'
   sidebar_avatar: img/avatar.jpeg
   featured_tags: true
@@ -75,7 +74,6 @@ params:
   # disqus_proxy : ''
   # disqus_site : ''
   social:
- #   rss: true
     email: 'imaig090@gmail.com'
     linkedin: 'https://www.linkedin.com/in/ibrahim-ma%C3%AFga'
     github: 'https://github.com/Ibrahim-Maiga'  
