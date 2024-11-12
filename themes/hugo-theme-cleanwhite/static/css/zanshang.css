@@ -199,7 +199,7 @@ button.close {
 
 .logo__cursor {
     display: inline-block;
-    width: 10px; /* Adjust thickness if needed */
+    width: 6px; /* Adjust thickness if needed */
     height: 1em;
     background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00bfff, transparent); /* Spectrum of blue colors */ 
     margin-left: 5px; /* Space between the title and cursor */
