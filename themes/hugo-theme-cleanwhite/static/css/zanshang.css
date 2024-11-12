@@ -200,18 +200,18 @@ button.close {
 
 .logo__cursor {
     display: inline-block;
-    width: 2px; /* Thinner, like a typical typing cursor */
-    height: 1em; /* Matches font size */
+    width: 3px; 
+    height: 1em; 
     background: linear-gradient(180deg, #003366, #0055cc, #007aff, #00bfff, transparent);
     margin-left: 5px; /* Space between title and cursor */
-    animation: gradient-blink 1.2s ease-in-out infinite;
-    box-shadow: 0 0 4px rgba(0, 122, 255, 0.5); /* Adds a subtle glow */
+    animation: gradient-blink 1.5s ease-in-out infinite;
+    box-shadow: 0 0 4px rgba(0, 122, 255, 0.5); 
     vertical-align: middle;
 }
 
 @keyframes gradient-blink {
     0%, 20%, 100% { opacity: 1; }
-    50% { opacity: 0; } /* Blinking effect with slight hold */
+    50% { opacity: 0; } 
 }
 
 
