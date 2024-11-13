@@ -11,9 +11,9 @@ tags: [ETL Pipeline, PostgreSQL, AWS, DMS, RDS, Aurora MySQL, Glue, Athena, S3]
 categories: [Tech]
 showtoc: true
 ---
-<p align="center">Photo by <a href="https://unsplash.com/@foxfox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Natalia Y.</a> on <a href="https://unsplash.com/photos/orange-room-with-open-door-DIewyzpUbRc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+<p align="center">Photo by <a href="https://www.istockphoto.com/portfolio/DmytroVaravin">Dmytro Varavin</a> on <a href="https://www.istockphoto.com/photo/smart-technologies-for-people-control-concept-deep-learning-and-intelligence-concept-gm1300182982-392588661">iStock</a></p>
 
-> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s perfect for anyone looking to gain hands-on experience with data engineering or add a robust, real-world project to their portfolio. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege.
+> This project stems from my desire to reconcile two of my core interests: data science and finance. Designed to be fully reproducible, it’s ideal for those seeking practical, hands-on experience in data engineering. Each decision in this project was guided by a trade-off between enhancing security and controlling costs, while strictly adhering to the principle of least privilege.
 
 ![](/img/2024-10-01-Building-an-Analytics-Solution-for-Effective-AML-Transaction-Monitoring/AML-Project-Architecture-Diagram.png)
 <center>Architecture Diagram</center>
