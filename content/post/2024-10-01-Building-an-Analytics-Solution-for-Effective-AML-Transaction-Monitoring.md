@@ -26,7 +26,7 @@ Financial institutions use automated software to monitor transactions in real-ti
 Anti-Money Laundering (AML) regulations require institutions to keep records of transactions for a minimum period. This includes details of transactions, customer profiles, and the SARs filed.
 When a transaction or series of transactions trigger suspicion (such as structuring, large cash deposits, or transfers to high-risk countries), institutions are required to file SARs with regulators. These reports often include transaction details, customer information, and reasons for suspicion.
 
-## <div style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: left; padding: 3px; background-color: #e9f5f3; border-radius: 5px;">Project Scenario</div>
+## <div style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: left; padding: 3px; background-color: #e9f5f3; border-radius: 5px;">Scenario</div>
 
 A financial institution processes thousands of transactions daily. To ensure regulatory compliance, the company must periodically review its AML systems and transaction records. Regulators may conduct audits to ensure that the organization is effectively tracking and reporting suspicious transactions. To mitigate non-compliance risk, the institution wants to strengthen its governance by periodically querying AML transaction data without straining the primary transactional database, which runs on Amazon Aurora MySQL.
 
@@ -118,7 +118,7 @@ select * from aml_transactions limit 5;     -- Check the changes
 ```
 
 **Note:** Since your PostgreSQL server is hosted locally (on your machine) and you're connecting remotely from AWS DMS, you may need to configure port forwarding on your router to forward traffic on port 5432 (PostgreSQL default port) to your machine's local IP address. 
-  * You can find your local IP address and your router’s IP address by typing the following command on Open PowerShell or Command Prompt:
+  * You can find your local IP address and your router’s IP address by typing the following command in PowerShell or Windows Command Prompt (CMD):
 ```powershell
 ipconfig
 ```
@@ -165,7 +165,7 @@ On your machine running PostgreSQL, you need to ensure PostgreSQL is set up to a
 **6. 🔒 Configure pg_hba.conf for Remote Connections.**
   
 You also need to update the <code>pg_hba.conf</code> file to allow connections from external IPs:
-* Open the <code>pg_hba.conf</code> file located in the same data directory (e.g., C:\Program Files\PostgreSQL\17\data\pg_hba.conf) or type the following command in your CLI:
+* Open the <code>pg_hba.conf</code> file located in the same data directory (e.g., C:\Program Files\PostgreSQL\15\data\pg_hba.conf) or type the following command in your CLI:
     ```powershell
     notepad "C:\Program Files\PostgreSQL\15\data\pg_hba.conf"
     ```
