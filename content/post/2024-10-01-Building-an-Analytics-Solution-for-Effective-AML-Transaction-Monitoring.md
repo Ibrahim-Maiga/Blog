@@ -34,7 +34,7 @@ As the company’s data engineer, I will design and implement an ETL pipeline us
 
 ## <div style="font-family: Arial, sans-serif; color: #2a9d8f; font-weight: bold; font-size: 1em; text-align: left; padding: 3px; background-color: #e9f5f3; border-radius: 5px;">Financial Cost</div>
 
-The total cost of this project was just over 10 USD, primarily due to an initial misconfiguration of partition settings in the Glue job. This led to the unintended creation of thousands of small tables during its first 10-minute run, consuming substantial compute resources and occupying over 300 MB in the ETL-output-bucket. However,  I eventually identified the issue, halted the Glue job, and corrected the partitioning error. Following my detailed guide carefully and completing the project in a single attempt could potentially bring costs down to around half of this amount.
+The total cost of this project was just over 10 USD, primarily due to an initial misconfiguration of partition settings in the Glue job. This led to the unintended creation of thousands of small tables during its first run, consuming substantial compute resources and occupying over 300 MB in the ETL-output-bucket. However,  I eventually identified the issue, halted the Glue job, and corrected the partitioning error. Following my detailed guide carefully and completing the project in a single attempt could potentially bring costs down to around half of this amount.
 
 Here is some additional information regarding the project's cost:
 
